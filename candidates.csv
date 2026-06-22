@@ -1,0 +1,101 @@
+candidate_id,rank,score,reasoning
+CAND_007,1,0.868,Staff ML Engineer 7yrs; skill:84%; semantic:76%; exp:100%; career:97%
+CAND_003,2,0.8655,Senior AI Engineer 5.9yrs; skill:86%; semantic:79%; exp:100%; career:82%
+CAND_009,3,0.8624,Senior AI Engineer 7.8yrs; skill:84%; semantic:73%; exp:100%; career:100%
+CAND_005,4,0.8498,Applied ML Engineer 6yrs; skill:84%; semantic:71%; exp:100%; career:100%
+CAND_002,5,0.8483,Search Engineer 4.2yrs; skill:84%; semantic:71%; exp:100%; career:100%
+CAND_007,6,0.8411,Research Scientist 6.9yrs; skill:76%; semantic:71%; exp:84%; career:92%
+CAND_008,7,0.8331,AI Researcher 1.7yrs; skill:82%; semantic:65%; exp:83%; career:85%
+CAND_009,8,0.8345,LLM Engineer 8.5yrs; skill:86%; semantic:73%; exp:89%; career:80%
+CAND_010,9,0.8316,Data Scientist 4.2yrs; skill:86%; semantic:71%; exp:82%; career:97%
+CAND_011,10,0.8246,Data Scientist 5.2yrs; skill:80%; semantic:71%; exp:84%; career:73%
+CAND_012,11,0.8257,Deep Learning Engineer 8.4yrs; skill:80%; semantic:75%; exp:98%; career:88%
+CAND_013,12,0.8158,Data Scientist 8.3yrs; skill:74%; semantic:76%; exp:95%; career:96%
+CAND_014,13,0.8137,Data Engineer 6.9yrs; skill:80%; semantic:80%; exp:80%; career:80%
+CAND_015,14,0.8146,Computer Vision Engineer 2.8yrs; skill:83%; semantic:75%; exp:80%; career:89%
+CAND_016,15,0.8056,ML Engineer 7.6yrs; skill:87%; semantic:76%; exp:81%; career:78%
+CAND_017,16,0.8017,Data Engineer 9.0yrs; skill:72%; semantic:68%; exp:81%; career:75%
+CAND_018,17,0.7987,AI Researcher 3.6yrs; skill:82%; semantic:69%; exp:97%; career:81%
+CAND_019,18,0.7986,NLP Engineer 4.4yrs; skill:80%; semantic:76%; exp:85%; career:84%
+CAND_020,19,0.7931,Computer Vision Engineer 7.8yrs; skill:72%; semantic:62%; exp:77%; career:84%
+CAND_021,20,0.7901,ML Engineer 5.9yrs; skill:77%; semantic:72%; exp:85%; career:75%
+CAND_022,21,0.7872,Backend Engineer 4.2yrs; skill:72%; semantic:78%; exp:92%; career:87%
+CAND_023,22,0.7816,NLP Engineer 5.5yrs; skill:77%; semantic:79%; exp:95%; career:74%
+CAND_024,23,0.7786,MLOps Engineer 3.1yrs; skill:71%; semantic:72%; exp:93%; career:80%
+CAND_025,24,0.777,ML Engineer 4.1yrs; skill:78%; semantic:75%; exp:85%; career:67%
+CAND_026,25,0.7682,Deep Learning Engineer 3.4yrs; skill:74%; semantic:78%; exp:91%; career:72%
+CAND_027,26,0.7712,NLP Engineer 7.6yrs; skill:70%; semantic:68%; exp:73%; career:86%
+CAND_028,27,0.7653,Research Scientist 9.2yrs; skill:83%; semantic:61%; exp:84%; career:81%
+CAND_029,28,0.7625,Research Scientist 4.5yrs; skill:79%; semantic:72%; exp:81%; career:83%
+CAND_030,29,0.7564,ML Engineer 6.2yrs; skill:71%; semantic:58%; exp:71%; career:79%
+CAND_031,30,0.7498,AI Researcher 2.1yrs; skill:77%; semantic:61%; exp:92%; career:86%
+CAND_032,31,0.7478,AI Researcher 6.1yrs; skill:74%; semantic:67%; exp:87%; career:86%
+CAND_033,32,0.7482,Software Engineer 4.9yrs; skill:79%; semantic:60%; exp:72%; career:75%
+CAND_034,33,0.7453,LLM Engineer 7.3yrs; skill:67%; semantic:69%; exp:85%; career:66%
+CAND_035,34,0.7416,AI Researcher 3.7yrs; skill:70%; semantic:59%; exp:80%; career:74%
+CAND_036,35,0.7381,Research Scientist 6.7yrs; skill:67%; semantic:71%; exp:90%; career:66%
+CAND_037,36,0.7342,AI Researcher 5.4yrs; skill:80%; semantic:73%; exp:89%; career:67%
+CAND_038,37,0.7308,LLM Engineer 8.9yrs; skill:79%; semantic:58%; exp:68%; career:72%
+CAND_039,38,0.7239,NLP Engineer 7.2yrs; skill:71%; semantic:73%; exp:92%; career:76%
+CAND_040,39,0.7182,ML Engineer 4.0yrs; skill:67%; semantic:54%; exp:85%; career:63%
+CAND_041,40,0.7177,NLP Engineer 2.1yrs; skill:71%; semantic:70%; exp:70%; career:85%
+CAND_042,41,0.71,Deep Learning Engineer 6.1yrs; skill:64%; semantic:70%; exp:76%; career:84%
+CAND_043,42,0.7105,AI Researcher 9.0yrs; skill:72%; semantic:61%; exp:80%; career:74%
+CAND_044,43,0.7075,LLM Engineer 5.2yrs; skill:67%; semantic:58%; exp:69%; career:76%
+CAND_045,44,0.706,Research Scientist 5.8yrs; skill:62%; semantic:65%; exp:79%; career:63%
+CAND_046,45,0.6971,Research Scientist 2.8yrs; skill:76%; semantic:69%; exp:86%; career:68%
+CAND_047,46,0.6969,Backend Engineer 8.0yrs; skill:71%; semantic:71%; exp:81%; career:59%
+CAND_048,47,0.6952,NLP Engineer 7.4yrs; skill:63%; semantic:69%; exp:71%; career:81%
+CAND_049,48,0.6863,Software Engineer 3.6yrs; skill:70%; semantic:64%; exp:68%; career:74%
+CAND_050,49,0.6825,MLOps Engineer 1.9yrs; skill:74%; semantic:51%; exp:79%; career:78%
+CAND_051,50,0.683,ML Engineer 4.9yrs; skill:70%; semantic:55%; exp:81%; career:72%
+CAND_052,51,0.6741,Research Scientist 4.5yrs; skill:74%; semantic:63%; exp:66%; career:58%
+CAND_053,52,0.6708,MLOps Engineer 8.4yrs; skill:61%; semantic:55%; exp:84%; career:76%
+CAND_054,53,0.6677,Deep Learning Engineer 4.8yrs; skill:62%; semantic:50%; exp:81%; career:78%
+CAND_055,54,0.6684,Computer Vision Engineer 2.9yrs; skill:73%; semantic:53%; exp:65%; career:76%
+CAND_056,55,0.659,LLM Engineer 8.4yrs; skill:69%; semantic:54%; exp:84%; career:75%
+CAND_057,56,0.6571,AI Researcher 5.3yrs; skill:60%; semantic:61%; exp:70%; career:56%
+CAND_058,57,0.6581,AI Researcher 1.7yrs; skill:65%; semantic:53%; exp:80%; career:61%
+CAND_059,58,0.6511,Applied Scientist 5.6yrs; skill:61%; semantic:48%; exp:79%; career:63%
+CAND_060,59,0.6521,Backend Engineer 2.9yrs; skill:65%; semantic:65%; exp:63%; career:79%
+CAND_061,60,0.641,Data Scientist 9.4yrs; skill:65%; semantic:53%; exp:78%; career:65%
+CAND_062,61,0.6401,Research Scientist 8.9yrs; skill:65%; semantic:51%; exp:76%; career:54%
+CAND_063,62,0.6389,MLOps Engineer 9.1yrs; skill:70%; semantic:60%; exp:63%; career:64%
+CAND_064,63,0.6348,MLOps Engineer 6.8yrs; skill:66%; semantic:47%; exp:80%; career:66%
+CAND_065,64,0.6294,NLP Engineer 6.9yrs; skill:59%; semantic:47%; exp:68%; career:76%
+CAND_066,65,0.6275,Deep Learning Engineer 4.9yrs; skill:59%; semantic:55%; exp:57%; career:59%
+CAND_067,66,0.6238,LLM Engineer 7.8yrs; skill:59%; semantic:53%; exp:74%; career:65%
+CAND_068,67,0.6212,LLM Engineer 2.2yrs; skill:64%; semantic:49%; exp:73%; career:67%
+CAND_069,68,0.6136,Deep Learning Engineer 9.4yrs; skill:58%; semantic:59%; exp:60%; career:52%
+CAND_070,69,0.6149,Software Engineer 7.1yrs; skill:54%; semantic:51%; exp:72%; career:56%
+CAND_071,70,0.6077,LLM Engineer 8.6yrs; skill:55%; semantic:56%; exp:78%; career:72%
+CAND_072,71,0.6043,Data Scientist 3.5yrs; skill:55%; semantic:61%; exp:68%; career:51%
+CAND_073,72,0.6009,Software Engineer 9.1yrs; skill:64%; semantic:55%; exp:79%; career:64%
+CAND_074,73,0.5986,Data Engineer 8.7yrs; skill:63%; semantic:51%; exp:75%; career:63%
+CAND_075,74,0.5969,Software Engineer 7.7yrs; skill:58%; semantic:56%; exp:75%; career:56%
+CAND_076,75,0.5914,Research Scientist 4.1yrs; skill:55%; semantic:42%; exp:61%; career:55%
+CAND_077,76,0.5835,MLOps Engineer 4.8yrs; skill:52%; semantic:48%; exp:57%; career:53%
+CAND_078,77,0.5835,Data Engineer 6.2yrs; skill:57%; semantic:44%; exp:63%; career:70%
+CAND_079,78,0.5757,Computer Vision Engineer 3.9yrs; skill:63%; semantic:51%; exp:64%; career:71%
+CAND_080,79,0.5788,AI Researcher 6.3yrs; skill:65%; semantic:48%; exp:71%; career:61%
+CAND_081,80,0.5722,Data Engineer 7.9yrs; skill:53%; semantic:48%; exp:61%; career:63%
+CAND_082,81,0.566,Deep Learning Engineer 4.7yrs; skill:56%; semantic:41%; exp:67%; career:47%
+CAND_083,82,0.5664,MLOps Engineer 3.6yrs; skill:49%; semantic:47%; exp:73%; career:51%
+CAND_084,83,0.5592,Backend Engineer 8.2yrs; skill:53%; semantic:53%; exp:60%; career:64%
+CAND_085,84,0.5606,Data Scientist 3.3yrs; skill:55%; semantic:53%; exp:52%; career:69%
+CAND_086,85,0.5565,NLP Engineer 1.7yrs; skill:58%; semantic:52%; exp:74%; career:50%
+CAND_087,86,0.5485,MLOps Engineer 3.5yrs; skill:54%; semantic:39%; exp:73%; career:56%
+CAND_088,87,0.5444,Data Scientist 9.2yrs; skill:56%; semantic:51%; exp:52%; career:64%
+CAND_089,88,0.544,AI Researcher 9.0yrs; skill:61%; semantic:47%; exp:72%; career:53%
+CAND_090,89,0.5364,Deep Learning Engineer 8.3yrs; skill:56%; semantic:48%; exp:51%; career:62%
+CAND_091,90,0.5386,Data Scientist 6.8yrs; skill:58%; semantic:47%; exp:49%; career:57%
+CAND_092,91,0.5326,Applied Scientist 9.2yrs; skill:50%; semantic:52%; exp:68%; career:45%
+CAND_093,92,0.5321,Deep Learning Engineer 6.7yrs; skill:52%; semantic:38%; exp:52%; career:56%
+CAND_094,93,0.5278,AI Researcher 3.6yrs; skill:53%; semantic:44%; exp:58%; career:61%
+CAND_095,94,0.5243,Computer Vision Engineer 6.4yrs; skill:45%; semantic:52%; exp:53%; career:54%
+CAND_096,95,0.5168,Backend Engineer 3.6yrs; skill:51%; semantic:40%; exp:58%; career:50%
+CAND_097,96,0.5175,Data Engineer 2.2yrs; skill:54%; semantic:39%; exp:47%; career:65%
+CAND_098,97,0.5101,ML Engineer 5.1yrs; skill:51%; semantic:37%; exp:57%; career:58%
+CAND_099,98,0.504,Research Scientist 5.3yrs; skill:45%; semantic:46%; exp:53%; career:54%
+CAND_100,99,0.5024,AI Researcher 4.0yrs; skill:58%; semantic:43%; exp:54%; career:51%
+CAND_101,100,0.5,AI Researcher 3.0yrs; skill:45%; semantic:34%; exp:58%; career:59%

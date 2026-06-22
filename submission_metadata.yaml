@@ -1,0 +1,100 @@
+# Redrob Hackathon — Submission Metadata
+#
+# Filled per submission_metadata_template.yaml instructions.
+# Submitted via portal at upload time.
+
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "redrob-ranker"   # TODO: update with your actual team name
+
+primary_contact:
+  name: "Seema"                         # TODO: update with full name
+  email: "primary@example.com"          # TODO: update with your email
+  phone: "+91-XXXXXXXXXX"               # TODO: update with your phone
+
+team_members:
+  - name: "Seema"                       # TODO: update with full name
+    email: "primary@example.com"        # TODO: update with your email
+    role: "JD Intelligence & Matching Logic"
+  - name: "Vivek"                       # TODO: update with full name
+    email: "vivek@example.com"          # TODO: update with Vivek's email
+    role: "Candidate Analysis & Scoring"
+  - name: "Teammate 3"                  # TODO: update with full name
+    email: "teammate3@example.com"      # TODO: update with their email
+    role: "Risk Assessment, Explainability & Dashboard"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/YOUR_USERNAME/redrob-ranker"
+# TODO: Replace with your actual GitHub repo URL
+
+sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker"
+# TODO: Replace with your actual HuggingFace / Streamlit / Colab link
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "Windows 11 Local Machine"
+  cpu_cores: 12
+  ram_gb: 15
+  python_version: "3.13.0"
+  os: "Windows-11-10.0.26200-SP0"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: true         # sentence-transformers model downloaded once
+  pre_computation_time_minutes: 2        # ~2 min first run to download model; cached thereafter
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+ai_tools_used:
+  - "Antigravity (Gemini-based AI IDE assistant)"
+  - "Claude"
+
+ai_usage_summary: |
+  Used Antigravity (an AI coding assistant) for architecture design, code generation,
+  and code review across all modules. Used Claude for approach discussion.
+  No candidate data was fed to any external LLM at any stage.
+  The ranker itself is fully offline — no API calls during ranking.
+
+# ============================================================================
+# Approach summary
+# ============================================================================
+methodology_summary: |
+  Five-dimensional candidate ranker combining rule-based signals and semantic
+  embeddings. The system uses a two-pass architecture for scalability:
+
+  Pass 1 — Fast rule-based pre-filter across all 100K+ candidates:
+    (1) Skill Score (30%): Hard skill match against JD taxonomy with proficiency
+        weighting (expert=1.0 down to beginner=0.3), endorsement boost, duration
+        trust, cluster-based fuzzy matching, and hidden-requirement inference.
+    (2) Experience Score (15%): Asymmetric penalty — sharp falloff for under-
+        experience (15 pts/yr), gentle falloff for over-experience (5 pts/yr).
+    (3) Career Score (15%): Title progression ladder, industry relevance, product
+        vs. services company weighting (pure services career penalized 0.4x per JD),
+        and job-hopping detection.
+    (4) Behavior Score (10%): Redrob signals composite — recruiter response rate,
+        GitHub activity, profile completeness, recency, and verification status.
+  Top 5,000 candidates retained for Pass 2.
+
+  Pass 2 — Semantic scoring via sentence-transformers (all-MiniLM-L6-v2):
+    (5) Semantic Score (30%): Cosine similarity between JD embedding and
+        candidate profile text (headline + summary + skills + career).
+  Final 5-dimension weighted score → top 100 output with explainable reasoning.
+
+  Runtime: ~4–5 minutes for 100K candidates on 12-core CPU, 15GB RAM.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true       # System explicitly flags non-AI titles, all-services careers
+  reproduction_tested: true

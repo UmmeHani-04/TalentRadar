@@ -1,0 +1,50 @@
+{
+  "role": "Senior AI Engineer — Founding Team",
+  "seniority": "senior",
+  "seniority_level": 4,
+  "required_skills": [
+    "elasticsearch",
+    "faiss",
+    "information retrieval",
+    "milvus",
+    "opensearch",
+    "pinecone",
+    "python",
+    "qdrant",
+    "sentence transformers",
+    "transformers",
+    "vector databases",
+    "weaviate"
+  ],
+  "preferred_skills": [
+    "llm fine-tuning",
+    "xgboost"
+  ],
+  "negative_signals": [
+    "title_chaser",
+    "framework_enthusiast",
+    "pure_services",
+    "pure_cv_speech"
+  ],
+  "experience_min": 5.0,
+  "experience_max": 9.0,
+  "hidden_requirements": [
+    "hugging face",
+    "machine learning",
+    "natural language processing",
+    "pytorch",
+    "ranking",
+    "wandb"
+  ],
+  "industry_keywords": [
+    "AI",
+    "ML",
+    "NLP",
+    "Retrieval",
+    "Ranking"
+  ],
+  "location_preferences": [
+    "Pune",
+    "Noida"
+  ]
+}
