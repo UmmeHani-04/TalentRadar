@@ -1,21 +1,24 @@
 FROM python:3.10-slim
 
-# Create a non-root user (required by Hugging Face Spaces)
+# Create a non-root user
 RUN useradd -m -u 1000 user
 USER user
+
+# Add user's local Python binaries to PATH
 ENV PATH="/home/user/.local/bin:$PATH"
 
+# Set working directory
 WORKDIR /app
 
-# Install dependencies
+# Install backend dependencies
 COPY --chown=user backend/requirements.txt ./
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-# Copy the rest of the application
+# Copy the entire project
 COPY --chown=user . .
 
-# Hugging Face Spaces run on port 7860 by default
-EXPOSE 7860
+# Render provides the PORT environment variable
+EXPOSE 10000
 
 # Start the FastAPI server
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["sh", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port ${PORT:-10000}"]
