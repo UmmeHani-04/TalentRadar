@@ -1,0 +1,101 @@
+candidate_id,rank,score,reasoning
+CAND_0077337,1,0.8680,Staff Machine Learning Engineer with 7.0 yrs; skill:84%; semantic:76%; exp:100%; career:97%; response rate 0.95; flags:career_regression
+CAND_0002025,2,0.8655,Senior AI Engineer with 5.9 yrs; skill:86%; semantic:79%; exp:100%; career:82%; response rate 0.80; flags:career_regression
+CAND_0071974,3,0.8624,Senior AI Engineer with 7.8 yrs; skill:84%; semantic:73%; exp:100%; career:100%; response rate 0.76
+CAND_0050876,4,0.8498,Applied ML Engineer with 6.0 yrs; skill:84%; semantic:71%; exp:100%; career:100%; response rate 0.67
+CAND_0020708,5,0.8483,Search Engineer with 4.2 yrs; skill:84%; semantic:71%; exp:100%; career:100%; response rate 0.84
+CAND_0008425,6,0.8482,Senior NLP Engineer with 7.8 yrs; skill:86%; semantic:77%; exp:100%; career:87%; response rate 0.66; flags:career_regression
+CAND_0081846,7,0.8459,Lead AI Engineer with 6.7 yrs; skill:78%; semantic:76%; exp:100%; career:100%; response rate 0.73
+CAND_0011162,8,0.8405,Recommendation Systems Engineer with 5.8 yrs; skill:86%; semantic:68%; exp:100%; career:100%; response rate 0.75
+CAND_0078042,9,0.8386,Applied ML Engineer with 4.7 yrs; skill:80%; semantic:71%; exp:100%; career:100%; response rate 0.91
+CAND_0046525,10,0.8363,Senior Machine Learning Engineer with 6.1 yrs; skill:74%; semantic:76%; exp:100%; career:100%; response rate 0.88
+CAND_0053591,11,0.8310,AI Engineer with 5.3 yrs; skill:74%; semantic:75%; exp:100%; career:100%; response rate 0.81
+CAND_0068351,12,0.8307,Lead AI Engineer with 6.4 yrs; skill:77%; semantic:77%; exp:100%; career:99%; response rate 0.86; flags:career_regression
+CAND_0084819,13,0.8273,Search Engineer with 4.5 yrs; skill:79%; semantic:74%; exp:100%; career:89%; response rate 0.74; flags:career_regression
+CAND_0074225,14,0.8259,Machine Learning Engineer with 4.3 yrs; skill:73%; semantic:72%; exp:100%; career:100%; response rate 0.91
+CAND_0072660,15,0.8258,Machine Learning Engineer with 7.1 yrs; skill:80%; semantic:71%; exp:100%; career:100%; response rate 0.53
+CAND_0007009,16,0.8250,Recommendation Systems Engineer with 7.9 yrs; skill:81%; semantic:69%; exp:100%; career:100%; response rate 0.62
+CAND_0099806,17,0.8227,AI Engineer with 4.6 yrs; skill:68%; semantic:75%; exp:100%; career:100%; response rate 0.76
+CAND_0096172,18,0.8181,NLP Engineer with 5.2 yrs; skill:81%; semantic:69%; exp:100%; career:100%; response rate 0.47
+CAND_0069905,19,0.8149,Applied ML Engineer with 6.6 yrs; skill:72%; semantic:75%; exp:100%; career:100%; response rate 0.78
+CAND_0036437,20,0.8145,Search Engineer with 4.8 yrs; skill:71%; semantic:74%; exp:100%; career:100%; response rate 0.87
+CAND_0013536,21,0.8137,Applied ML Engineer with 14.1 yrs; skill:74%; semantic:72%; exp:100%; career:100%; response rate 0.87
+CAND_0061655,22,0.8132,Machine Learning Engineer with 4.6 yrs; skill:73%; semantic:72%; exp:100%; career:100%; response rate 0.88
+CAND_0086151,23,0.8094,Recommendation Systems Engineer with 7.7 yrs; skill:76%; semantic:72%; exp:100%; career:100%; response rate 0.52
+CAND_0046064,24,0.8090,Senior NLP Engineer with 8.9 yrs; skill:69%; semantic:72%; exp:100%; career:100%; response rate 0.78; flags:career_regression
+CAND_0088025,25,0.8084,Staff Machine Learning Engineer with 8.6 yrs; skill:69%; semantic:75%; exp:100%; career:89%; response rate 0.83; flags:career_regression
+CAND_0091909,26,0.8083,Machine Learning Engineer with 6.9 yrs; skill:78%; semantic:68%; exp:100%; career:100%; response rate 0.65
+CAND_0018499,27,0.8030,Senior Machine Learning Engineer with 7.2 yrs; skill:66%; semantic:73%; exp:100%; career:99%; response rate 0.61; flags:career_regression
+CAND_0095619,28,0.8027,NLP Engineer with 15.6 yrs; skill:75%; semantic:66%; exp:92%; career:100%; response rate 0.90
+CAND_0049538,29,0.8026,Applied ML Engineer with 5.8 yrs; skill:69%; semantic:73%; exp:100%; career:100%; response rate 0.72
+CAND_0043228,30,0.8024,Applied ML Engineer with 6.8 yrs; skill:73%; semantic:72%; exp:100%; career:100%; response rate 0.41
+CAND_0044855,31,0.8021,Senior Data Scientist with 6.6 yrs; skill:72%; semantic:72%; exp:100%; career:100%; response rate 0.57
+CAND_0077285,32,0.8019,Recommendation Systems Engineer with 5.5 yrs; skill:75%; semantic:66%; exp:100%; career:100%; response rate 0.56
+CAND_0070398,33,0.8001,Machine Learning Engineer with 7.2 yrs; skill:74%; semantic:71%; exp:100%; career:100%; response rate 0.60
+CAND_0093547,34,0.7999,Senior Machine Learning Engineer with 2.9 yrs; skill:79%; semantic:75%; exp:84%; career:93%; response rate 0.75; flags:career_regression
+CAND_0076163,35,0.7998,NLP Engineer with 6.9 yrs; skill:68%; semantic:69%; exp:100%; career:100%; response rate 0.84
+CAND_0001610,36,0.7983,Machine Learning Engineer with 3.0 yrs; skill:80%; semantic:70%; exp:85%; career:99%; response rate 0.57; flags:career_regression
+CAND_0095528,37,0.7977,Senior Data Scientist with 5.3 yrs; skill:71%; semantic:72%; exp:100%; career:100%; response rate 0.55
+CAND_0000031,38,0.7975,Recommendation Systems Engineer with 6.0 yrs; skill:72%; semantic:70%; exp:100%; career:100%; response rate 0.91
+CAND_0042506,39,0.7971,Search Engineer with 4.2 yrs; skill:69%; semantic:74%; exp:100%; career:100%; response rate 0.48
+CAND_0039754,40,0.7969,Senior Applied Scientist with 16.2 yrs; skill:80%; semantic:77%; exp:89%; career:69%; response rate 0.81; flags:career_regression
+CAND_0081053,41,0.7969,NLP Engineer with 5.4 yrs; skill:68%; semantic:71%; exp:100%; career:100%; response rate 0.83
+CAND_0024466,42,0.7967,Search Engineer with 5.2 yrs; skill:69%; semantic:74%; exp:100%; career:100%; response rate 0.47
+CAND_0010257,43,0.7965,Senior Data Scientist with 6.5 yrs; skill:68%; semantic:71%; exp:100%; career:100%; response rate 0.72; flags:career_regression
+CAND_0041611,44,0.7964,Staff Machine Learning Engineer with 6.4 yrs; skill:83%; semantic:72%; exp:100%; career:100%; response rate 0.07
+CAND_0029367,45,0.7958,Senior Data Scientist with 5.7 yrs; skill:68%; semantic:72%; exp:100%; career:100%; response rate 0.77
+CAND_0033861,46,0.7956,Senior NLP Engineer with 8.0 yrs; skill:80%; semantic:74%; exp:100%; career:93%; response rate 0.16; flags:career_regression
+CAND_0008239,47,0.7955,AI Engineer with 4.0 yrs; skill:71%; semantic:69%; exp:100%; career:100%; response rate 0.73
+CAND_0057701,48,0.7951,Recommendation Systems Engineer with 4.1 yrs; skill:66%; semantic:74%; exp:100%; career:100%; response rate 0.56
+CAND_0014440,49,0.7950,Recommendation Systems Engineer with 6.4 yrs; skill:66%; semantic:69%; exp:100%; career:100%; response rate 0.64
+CAND_0017960,50,0.7913,Recommendation Systems Engineer with 7.7 yrs; skill:64%; semantic:72%; exp:100%; career:100%; response rate 0.72
+CAND_0018549,51,0.7896,Recommendation Systems Engineer with 6.8 yrs; skill:66%; semantic:73%; exp:100%; career:100%; response rate 0.73
+CAND_0065195,52,0.7895,Search Engineer with 5.1 yrs; skill:61%; semantic:74%; exp:100%; career:95%; response rate 0.80; flags:career_regression
+CAND_0074735,53,0.7894,Applied ML Engineer with 5.5 yrs; skill:61%; semantic:71%; exp:100%; career:100%; response rate 0.77
+CAND_0079064,54,0.7880,Senior Data Scientist with 5.2 yrs; skill:64%; semantic:70%; exp:100%; career:100%; response rate 0.91
+CAND_0006557,55,0.7875,NLP Engineer with 7.9 yrs; skill:68%; semantic:72%; exp:100%; career:100%; response rate 0.63
+CAND_0039383,56,0.7835,Applied ML Engineer with 7.1 yrs; skill:64%; semantic:72%; exp:100%; career:100%; response rate 0.61
+CAND_0076904,57,0.7820,Senior Data Scientist with 4.2 yrs; skill:68%; semantic:72%; exp:100%; career:100%; response rate 0.54
+CAND_0006418,58,0.7819,Machine Learning Engineer with 5.7 yrs; skill:63%; semantic:70%; exp:100%; career:100%; response rate 0.92
+CAND_0022812,59,0.7818,Applied ML Engineer with 4.5 yrs; skill:67%; semantic:72%; exp:100%; career:100%; response rate 0.79
+CAND_0005649,60,0.7815,Senior Data Scientist with 7.4 yrs; skill:61%; semantic:76%; exp:100%; career:100%; response rate 0.57; flags:career_regression
+CAND_0075574,61,0.7813,Machine Learning Engineer with 5.7 yrs; skill:68%; semantic:69%; exp:100%; career:100%; response rate 0.58
+CAND_0042100,62,0.7808,Machine Learning Engineer with 7.3 yrs; skill:66%; semantic:71%; exp:100%; career:89%; response rate 0.87; flags:career_regression
+CAND_0079284,63,0.7803,Machine Learning Engineer with 4.9 yrs; skill:66%; semantic:71%; exp:100%; career:100%; response rate 0.79
+CAND_0041669,64,0.7799,Recommendation Systems Engineer with 8.0 yrs; skill:61%; semantic:71%; exp:100%; career:100%; response rate 0.77
+CAND_0044222,65,0.7799,AI Engineer with 7.7 yrs; skill:58%; semantic:77%; exp:100%; career:100%; response rate 0.60
+CAND_0075249,66,0.7799,Applied ML Engineer with 6.2 yrs; skill:67%; semantic:68%; exp:100%; career:100%; response rate 0.82
+CAND_0032515,67,0.7796,Machine Learning Engineer with 5.1 yrs; skill:64%; semantic:73%; exp:100%; career:100%; response rate 0.54
+CAND_0068811,68,0.7796,Applied ML Engineer with 8.0 yrs; skill:64%; semantic:73%; exp:100%; career:100%; response rate 0.42
+CAND_0030031,69,0.7788,AI Engineer with 5.7 yrs; skill:68%; semantic:68%; exp:100%; career:100%; response rate 0.94; flags:career_regression
+CAND_0009024,70,0.7785,Search Engineer with 5.2 yrs; skill:63%; semantic:74%; exp:100%; career:100%; response rate 0.46
+CAND_0030827,71,0.7783,Senior Data Scientist with 5.4 yrs; skill:63%; semantic:74%; exp:100%; career:100%; response rate 0.52
+CAND_0093912,72,0.7774,Senior Data Scientist with 5.3 yrs; skill:61%; semantic:69%; exp:100%; career:100%; response rate 0.66
+CAND_0064904,73,0.7773,AI Engineer with 4.9 yrs; skill:62%; semantic:72%; exp:100%; career:100%; response rate 0.78
+CAND_0045250,74,0.7754,Applied ML Engineer with 6.6 yrs; skill:65%; semantic:72%; exp:100%; career:100%; response rate 0.74
+CAND_0055992,75,0.7752,AI Engineer with 16.9 yrs; skill:65%; semantic:76%; exp:86%; career:98%; response rate 0.72; flags:career_regression
+CAND_0007460,76,0.7732,AI Engineer with 4.7 yrs; skill:61%; semantic:72%; exp:100%; career:100%; response rate 0.48
+CAND_0020877,77,0.7729,Applied ML Engineer with 5.1 yrs; skill:69%; semantic:70%; exp:100%; career:95%; response rate 0.66; flags:career_regression
+CAND_0096142,78,0.7729,Applied ML Engineer with 5.0 yrs; skill:61%; semantic:67%; exp:100%; career:100%; response rate 0.84
+CAND_0011687,79,0.7726,Senior NLP Engineer with 7.8 yrs; skill:65%; semantic:70%; exp:100%; career:82%; response rate 0.89; flags:career_regression
+CAND_0027801,80,0.7719,NLP Engineer with 7.4 yrs; skill:65%; semantic:66%; exp:100%; career:100%; response rate 0.65
+CAND_0058688,81,0.7712,AI Engineer with 6.7 yrs; skill:60%; semantic:70%; exp:100%; career:100%; response rate 0.74
+CAND_0051615,82,0.7711,Search Engineer with 4.6 yrs; skill:56%; semantic:72%; exp:100%; career:100%; response rate 0.88
+CAND_0083307,83,0.7709,Search Engineer with 7.8 yrs; skill:62%; semantic:69%; exp:100%; career:100%; response rate 0.70
+CAND_0037566,84,0.7701,Machine Learning Engineer with 6.9 yrs; skill:64%; semantic:68%; exp:100%; career:100%; response rate 0.50
+CAND_0064326,85,0.7701,Search Engineer with 7.6 yrs; skill:55%; semantic:72%; exp:100%; career:100%; response rate 0.94
+CAND_0032807,86,0.7696,Machine Learning Engineer with 4.2 yrs; skill:72%; semantic:67%; exp:100%; career:100%; response rate 0.51
+CAND_0066999,87,0.7686,Recommendation Systems Engineer with 5.9 yrs; skill:64%; semantic:66%; exp:100%; career:95%; response rate 0.63; flags:career_regression
+CAND_0042029,88,0.7685,Senior Data Scientist with 6.5 yrs; skill:59%; semantic:74%; exp:100%; career:100%; response rate 0.67
+CAND_0050454,89,0.7685,AI Engineer with 6.8 yrs; skill:57%; semantic:75%; exp:100%; career:100%; response rate 0.77
+CAND_0015528,90,0.7677,Applied ML Engineer with 7.4 yrs; skill:69%; semantic:73%; exp:100%; career:89%; response rate 0.53; flags:career_regression
+CAND_0009691,91,0.7663,Applied ML Engineer with 6.2 yrs; skill:59%; semantic:71%; exp:100%; career:100%; response rate 0.64
+CAND_0062247,92,0.7654,AI Engineer with 7.3 yrs; skill:56%; semantic:73%; exp:100%; career:100%; response rate 0.78
+CAND_0092245,93,0.7653,Senior Data Scientist with 4.1 yrs; skill:63%; semantic:69%; exp:100%; career:100%; response rate 0.50
+CAND_0080766,94,0.7650,Staff Machine Learning Engineer with 8.8 yrs; skill:59%; semantic:74%; exp:100%; career:98%; response rate 0.66; flags:career_regression
+CAND_0078492,95,0.7646,Recommendation Systems Engineer with 5.1 yrs; skill:66%; semantic:73%; exp:100%; career:89%; response rate 0.70; flags:career_regression
+CAND_0007411,96,0.7639,Senior Machine Learning Engineer with 8.0 yrs; skill:69%; semantic:71%; exp:100%; career:100%; response rate 0.12
+CAND_0074648,97,0.7637,AI Research Engineer with 4.1 yrs; skill:65%; semantic:65%; exp:100%; career:100%; response rate 0.82
+CAND_0047721,98,0.7632,Senior Data Scientist with 7.0 yrs; skill:69%; semantic:64%; exp:100%; career:100%; response rate 0.49
+CAND_0098846,99,0.7626,AI Engineer with 7.6 yrs; skill:49%; semantic:75%; exp:100%; career:100%; response rate 0.62
+CAND_0019480,100,0.7617,NLP Engineer with 2.8 yrs; skill:59%; semantic:72%; exp:82%; career:100%; response rate 0.87; flags:career_regression

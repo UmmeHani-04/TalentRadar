@@ -1,0 +1,51 @@
+candidate_id,rank,score,reasoning
+CAND_0000031,1,0.7687,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nConfidence: 80%\n\nRisk Level: Low
+CAND_0000014,2,0.6519,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n\nConfidence: 70%\n\nRisk Level: Low
+CAND_0000045,3,0.6313,Strengths:\n+ Relevant experience\n+ High authenticity score\n+ Strong career growth\n+ High future potential\n\nWeaknesses:\n- Missing core domain skills\n\nConfidence: 53%\n\nRisk Level: Low
+CAND_0000001,4,0.6288,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Career stagnation detected\n\nConfidence: 66%\n\nRisk Level: Low
+CAND_0000027,5,0.6129,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n\nConfidence: 57%\n\nRisk Level: Low
+CAND_0000004,6,0.5999,Strengths:\n+ Relevant experience\n+ High authenticity score\n+ Strong career growth\n+ High future potential\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 52%\n\nRisk Level: Low
+CAND_0000021,7,0.5979,Strengths:\n+ Relevant experience\n+ High authenticity score\n+ Strong career growth\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 58%\n\nRisk Level: Low
+CAND_0000025,8,0.5933,Strengths:\n+ Relevant experience\n+ High authenticity score\n+ High future potential\n\nWeaknesses:\n- Missing core domain skills\n\nConfidence: 51%\n\nRisk Level: Low
+CAND_0000010,9,0.5699,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n\nConfidence: 54%\n\nRisk Level: Low
+CAND_0000017,10,0.5638,Strengths:\n+ Relevant experience\n+ High authenticity score\n+ High future potential\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 51%\n\nRisk Level: Low
+CAND_0000041,11,0.5593,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n\nConfidence: 47%\n\nRisk Level: Low
+CAND_0000019,12,0.5592,Strengths:\n+ Relevant experience\n+ High authenticity score\n+ Strong career growth\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 50%\n\nRisk Level: Low
+CAND_0000008,13,0.5550,Strengths:\n+ Relevant experience\n+ High authenticity score\n+ High future potential\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 54%\n\nRisk Level: Low
+CAND_0000035,14,0.5543,Strengths:\n+ Relevant experience\n+ High authenticity score\n+ High future potential\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 51%\n\nRisk Level: Low
+CAND_0000009,15,0.5519,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 54%\n\nRisk Level: Low
+CAND_0000046,16,0.5511,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 52%\n\nRisk Level: Low
+CAND_0000048,17,0.5468,Strengths:\n+ Relevant experience\n+ High authenticity score\n+ High future potential\n\nWeaknesses:\n- Missing core domain skills\n\nConfidence: 47%\n\nRisk Level: Low
+CAND_0000032,18,0.5444,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 52%\n\nRisk Level: Low
+CAND_0000002,19,0.5440,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 53%\n\nRisk Level: Low
+CAND_0000039,20,0.5416,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 52%\n\nRisk Level: Low
+CAND_0000016,21,0.5346,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 50%\n\nRisk Level: Low
+CAND_0000037,22,0.5320,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Career stagnation detected\n\nConfidence: 51%\n\nRisk Level: Low
+CAND_0000018,23,0.5317,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 52%\n\nRisk Level: Low
+CAND_0000011,24,0.5291,Strengths:\n+ High authenticity score\n+ High future potential\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 53%\n\nRisk Level: Low
+CAND_0000034,25,0.5260,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 49%\n\nRisk Level: Low
+CAND_0000043,26,0.5228,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 62%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000030,27,0.5210,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 51%\n\nRisk Level: Low
+CAND_0000020,28,0.5181,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 56%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000005,29,0.5178,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 48%\n\nRisk Level: Low
+CAND_0000042,30,0.5118,Strengths:\n+ Relevant experience\n+ High authenticity score\n+ Strong career growth\n+ High future potential\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 52%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000044,31,0.5099,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Career stagnation detected\n\nConfidence: 52%\n\nRisk Level: Low
+CAND_0000040,32,0.4991,Strengths:\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 53%\n\nRisk Level: Low
+CAND_0000015,33,0.4942,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 54%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000006,34,0.4927,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Career stagnation detected\n\nConfidence: 52%\n\nRisk Level: Low
+CAND_0000047,35,0.4922,Strengths:\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 52%\n\nRisk Level: Low
+CAND_0000038,36,0.4916,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 62%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000022,37,0.4899,Strengths:\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n\nConfidence: 52%\n\nRisk Level: Low
+CAND_0000036,38,0.4759,Strengths:\n+ Relevant experience\n+ High authenticity score\n+ Strong career growth\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 53%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000028,39,0.4742,Strengths:\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 51%\n\nRisk Level: Low
+CAND_0000013,40,0.4645,Strengths:\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 53%\n\nRisk Level: Low
+CAND_0000007,41,0.4586,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n\nConfidence: 53%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000026,42,0.4584,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 53%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000033,43,0.4538,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 51%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000012,44,0.4470,Strengths:\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 52%\n\nRisk Level: Low
+CAND_0000023,45,0.4463,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n\nConfidence: 53%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000024,46,0.4424,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Career stagnation detected\n\nConfidence: 54%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000049,47,0.4381,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Career stagnation detected\n\nConfidence: 51%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000050,48,0.3913,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Career stagnation detected\n\nConfidence: 50%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000029,49,0.3860,Strengths:\n+ Relevant experience\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Career stagnation detected\n\nConfidence: 51%\n\nRisk Level: Medium (Inconsistent Path)
+CAND_0000003,50,0.3639,Strengths:\n+ High authenticity score\n\nWeaknesses:\n- Missing core domain skills\n- Low recruiter engagement signals\n\nConfidence: 53%\n\nRisk Level: Medium (Inconsistent Path)
