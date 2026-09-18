@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TalentRadar  — Modern ATS Intelligence</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+  
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    }
+    .glass-card-dark {
+      background: rgba(15, 23, 42, 0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 9999px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.2); }
+    .page-transition { animation: fadeInTranslate 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes fadeInTranslate {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .confetti-piece {
+      position: fixed; width: 8px; height: 8px; pointer-events: none; z-index: 10000;
+      animation: fallAndRotate 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+    }
+    @keyframes fallAndRotate {
+      0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(500px) rotate(720deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="h-screen flex bg-[#f8fafc] text-slate-900 antialiased overflow-hidden select-none">
+
+  <aside class="w-64 bg-slate-950 border-r border-slate-900 flex flex-col justify-between h-screen flex-shrink-0 z-30">
+    <div class="flex flex-col min-h-0">
+      <div class="px-5 py-5 flex items-center justify-between border-b border-slate-900 flex-shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
+            <i class="ti ti-radar-2 text-lg"></i>
+          </div>
+          <div>
+            <h1 class="text-sm font-semibold text-white tracking-tight">TalentRadar</h1>
+            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">ATS Intelligence</p>
+          </div>
+        </div>
+        <span class="text-[10px] bg-slate-900 border border-slate-800 text-slate-400 px-1.5 py-0.5 rounded font-mono"></span>
+      </div>
+
+      <div class="px-3 py-4 flex-shrink-0">
+        <p class="px-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Main</p>
+        <nav class="space-y-1">
+          <button onclick="goTo('dashboard', this)" class="ni w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all group cursor-pointer text-white bg-slate-900 font-semibold" aria-current="page">
+            <div class="flex items-center gap-2.5">
+              <i class="ti ti-layout-dashboard text-base text-indigo-400 group-hover:text-white transition-colors"></i>
+              <span>Dashboard</span>
+            </div>
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          </button>
+          
+          <button onclick="goTo('candidates', this)" class="ni w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all group cursor-pointer text-slate-400 hover:text-white hover:bg-slate-900/50">
+            <div class="flex items-center gap-2.5">
+              <i class="ti ti-users text-base text-slate-500 group-hover:text-white transition-colors"></i>
+              <span>Candidates</span>
+            </div>
+            <span id="nav-count" class="px-1.5 py-0.5 text-[10px] font-bold bg-slate-900 border border-slate-800 text-slate-400 rounded-full min-w-5 text-center">100</span>
+          </button>
+
+          <button onclick="goTo('ai', this)" class="ni w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all group cursor-pointer text-slate-400 hover:text-white hover:bg-slate-900/50">
+            <div class="flex items-center gap-2.5">
+              <i class="ti ti-brain text-base text-slate-500 group-hover:text-white transition-colors"></i>
+              <span>TalentGPT Copilot</span>
+            </div>
+            <span class="px-1.5 py-0.5 text-[9px] font-bold bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 rounded-md tracking-wide uppercase">AI</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="px-3 py-2 flex-shrink-0">
+        <p class="px-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Insights</p>
+        <nav class="space-y-1">
+          <button onclick="goTo('analytics', this)" class="ni w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all group cursor-pointer text-slate-400 hover:text-white hover:bg-slate-900/50">
+            <div class="flex items-center gap-2.5">
+              <i class="ti ti-chart-bar text-base text-slate-500 group-hover:text-white transition-colors"></i>
+              <span>Analytics & Funnel</span>
+            </div>
+          </button>
+
+          <button onclick="goTo('compare', this)" class="ni w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all group cursor-pointer text-slate-400 hover:text-white hover:bg-slate-900/50">
+            <div class="flex items-center gap-2.5">
+              <i class="ti ti-arrows-diff text-base text-slate-500 group-hover:text-white transition-colors"></i>
+              <span>Matrix Compare</span>
+            </div>
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    <div class="p-3 border-t border-slate-900 bg-slate-950/60 flex-shrink-0">
+      <div onclick="showProfile()" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-900 transition-all cursor-pointer group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-white flex items-center justify-center font-bold text-xs border border-amber-400/20 shadow-inner">
+          HR
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-xs font-semibold text-slate-200 truncate group-hover:text-white">Umme Hani</p>
+          <p class="text-[10px] text-slate-500 truncate font-medium">Talent Acquisition Lead</p>
+        </div>
+        <i class="ti ti-dots-vertical text-slate-500 group-hover:text-slate-300 text-sm transition-colors"></i>
+      </div>
+    </div>
+  </aside>
+
+  <div class="flex-1 flex flex-col min-w-0 relative">
+    
+    <header class="h-14 bg-white border-b border-slate-200 px-6 flex items-center justify-between flex-shrink-0 z-20 shadow-sm shadow-slate-100/50">
+      <div>
+        <h2 id="pgtitle" class="text-sm font-semibold text-slate-900 tracking-tight">Dashboard</h2>
+        <p id="pgcrumb" class="text-[11px] text-slate-400 font-medium mt-0.5">TalentRadar / Dashboard</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[11px] font-semibold">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span id="live-count">100 profiles</span>
+        </div>
+        <button onclick="downloadCSV()" class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-slate-200 rounded-lg bg-white hover:bg-slate-50 text-slate-700 text-xs font-medium cursor-pointer transition-all shadow-sm">
+          <i class="ti ti-download text-slate-500"></i> Export CSV
+        </button>
+        <button onclick="openModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium cursor-pointer transition-all rounded-lg shadow-md shadow-slate-950/10">
+          <i class="ti ti-plus text-slate-300"></i> Add Candidate
+        </button>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto no-scrollbar p-6 bg-[#f8fafc]">
+      
+      <div class="pg page-transition space-y-6" id="pg-dashboard">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" id="krow"></div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="prow"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          <div class="glass-card rounded-xl p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">Score distribution</h3>
+                <p class="text-[11px] text-slate-400 font-medium">All profiles bucketed by global metric range</p>
+              </div>
+            </div>
+            <div class="h-48 relative"><canvas id="distChart"></canvas></div>
+          </div>
+          <div class="glass-card rounded-xl p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">Risk breakdown</h3>
+                <p class="text-[11px] text-slate-400 font-medium">Algorithmic risk validation model</p>
+              </div>
+            </div>
+            <div id="rleg" class="flex flex-wrap gap-2 mb-3"></div>
+            <div class="h-36 relative"><canvas id="riskChart"></canvas></div>
+          </div>
+        </div>
+        <div class="glass-card rounded-xl p-5 shadow-sm">
+          <div class="mb-4">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">Global Score trend</h3>
+            <p class="text-[11px] text-slate-400 font-medium">Composite distribution trajectory across complete cohort rank curve</p>
+          </div>
+          <div class="h-40 relative"><canvas id="trendChart"></canvas></div>
+        </div>
+      </div>
+
+      <div class="pg page-transition hidden" id="pg-candidates">
+        <div class="glass-card rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+          <div class="p-4 bg-white/60 border-b border-slate-200/80 flex flex-col sm:flex-row gap-3 items-center justify-between">
+            <div class="relative w-full sm:w-72">
+              <i class="ti ti-search absolute left-3 top-2.5 text-slate-400 text-sm"></i>
+              <input type="text" id="srch" placeholder="Search ID, title, or skills..." oninput="filterTable()" class="w-full bg-white border border-slate-200 rounded-lg pl-9 pr-4 py-1.5 text-xs focus:outline-none focus:border-indigo-500 text-slate-800 transition-colors placeholder-slate-400" />
+            </div>
+            <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+              <select id="rfil" onchange="filterTable()" class="bg-white border border-slate-200 text-slate-700 rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-indigo-500 cursor-pointer transition-colors font-medium">
+                <option value="all">All Risk Levels</option>
+                <option value="Low">Low Risk Only</option>
+                <option value="Medium">Medium Risk Only</option>
+                <option value="High">High Risk Only</option>
+              </select>
+              <select id="sortFil" onchange="filterTable()" class="bg-white border border-slate-200 text-slate-700 rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-indigo-500 cursor-pointer transition-colors font-medium">
+                <option value="rank_asc">Sort: Rank (High-Low)</option>
+                <option value="score_desc">Sort: Score (Highest)</option>
+                <option value="skill_desc">Sort: Technical Skill</option>
+                <option value="semantic_desc">Sort: Semantic Fit</option>
+                <option value="exp_desc">Sort: Experience</option>
+              </select>
+            </div>
+          </div>
+          <div class="overflow-x-auto custom-scrollbar">
+            <table class="w-full border-collapse text-left">
+              <thead>
+                <tr class="bg-slate-50/70 border-b border-slate-200">
+                  <th class="p-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 w-16 text-center">Rank</th>
+                  <th class="p-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 w-64">Candidate Details</th>
+                  <th class="p-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 w-48">Composite Index Score</th>
+                  <th class="p-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 text-center">Technical</th>
+                  <th class="p-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 text-center">Semantic</th>
+                  <th class="p-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 text-center">Exp</th>
+                  <th class="p-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 text-center">Career</th>
+                  <th class="p-3.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 w-24 text-center">Risk Tier</th>
+                </tr>
+              </thead>
+              <tbody id="tbl" class="divide-y divide-slate-100 bg-white/40"></tbody>
+            </table>
+          </div>
+          <div class="p-3.5 bg-white/60 border-t border-slate-200 flex items-center justify-between text-xs text-slate-400 font-medium">
+            <span id="pginfo" class="text-slate-500"></span>
+            <div class="flex items-center gap-1" id="pbs"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pg page-transition hidden" id="pg-ai">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+          <div class="lg:col-span-1 space-y-4">
+            <div class="glass-card rounded-xl p-4 shadow-sm space-y-4">
+              <div>
+                <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Selected Target Profile</label>
+                <select id="aiSel" onchange="renderAI()" class="w-full bg-white border border-slate-200 text-slate-800 rounded-lg p-2 text-xs focus:outline-none focus:border-indigo-500 cursor-pointer font-medium shadow-sm transition-colors"></select>
+              </div>
+              <hr class="border-slate-200/60" />
+              <div>
+                <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Internal Vector Matrix Snapshot</label>
+                <div id="aiStats" class="space-y-1.5"></div>
+              </div>
+            </div>
+            <div class="glass-card rounded-xl p-4 shadow-sm">
+              <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-3">Granular Vector Breakdown</label>
+              <div id="aiFactors" class="space-y-3"></div>
+            </div>
+          </div>
+          <div class="lg:col-span-2">
+            <div class="bg-slate-900 border border-slate-800 shadow-xl rounded-xl overflow-hidden text-slate-100">
+              <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between bg-gradient-to-r from-slate-900 via-slate-900 to-indigo-950/40">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                    <i class="ti ti-sparkles text-sm animate-pulse"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-xs font-semibold text-white">TalentGPT Recruiter Copilot</h3>
+                    <p class="text-[10px] text-slate-500 font-medium">Real-time deep evaluation layer</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1.5 bg-slate-800 border border-slate-700/60 rounded-md px-2 py-0.5 text-[10px] font-mono text-indigo-300">
+                  <span>Model: GPT-4o-Talent</span>
+                </div>
+              </div>
+              <div id="aiVerdict"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pg page-transition hidden" id="pg-analytics">
+        <div class="space-y-6">
+          <div class="bg-gradient-to-r from-indigo-900 via-slate-900 to-slate-900 border border-indigo-900/30 rounded-xl p-5 shadow-md shadow-indigo-950/5 relative overflow-hidden text-white">
+            <div class="absolute -right-10 -bottom-10 text-indigo-500/10 text-9xl pointer-events-none font-sans">AI</div>
+            <div class="flex gap-4 items-start relative z-10">
+              <div class="p-2 bg-indigo-500/20 border border-indigo-400/30 rounded-lg text-indigo-300 text-lg flex-shrink-0"><i class="ti ti-bulb"></i></div>
+              <div class="space-y-1">
+                <h4 class="text-xs font-bold tracking-wider text-indigo-300 uppercase">Automated Recruiter Strategy Insight</h4>
+                <p class="text-xs text-slate-300 leading-relaxed max-w-3xl">
+                  Cohort matrix trends indicate heavy cluster parity between <span class="text-white font-semibold underline decoration-indigo-400 decoration-2">72% and 84% skill metrics</span>. Strong emphasis should be directed toward candidates with semantic scores outperforming their core title index baseline. Risk vectors suggest low organizational attrition within top tier quadrant profiles.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div class="glass-card rounded-xl p-5 shadow-sm">
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">Skill % vs Semantic % Correlation</h3>
+                <p class="text-[11px] text-slate-400 font-medium">Bubble dimensions map direct proportional volume to composite score index</p>
+              </div>
+              <div class="h-64 relative mt-3"><canvas id="bubChart"></canvas></div>
+            </div>
+            <div class="glass-card rounded-xl p-5 shadow-sm">
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">Top 10 Advanced Multi-Factor Analysis</h3>
+                <p class="text-[11px] text-slate-400 font-medium">Comparative matrix metrics mapping of leading cohort entries</p>
+              </div>
+              <div class="h-64 relative mt-3"><canvas id="facChart"></canvas></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            <div class="glass-card rounded-xl p-4 shadow-sm lg:col-span-1">
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">Average Index Score by Risk</h3>
+                <p class="text-[11px] text-slate-400 font-medium">Composite mean mapped cleanly across safety tiers</p>
+              </div>
+              <div class="h-44 relative mt-3"><canvas id="tierChart"></canvas></div>
+            </div>
+            <div class="glass-card rounded-xl p-4 shadow-sm lg:col-span-1">
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">Experience Year Distribution</h3>
+                <p class="text-[11px] text-slate-400 font-medium">Volume spread based on calculated internal weight</p>
+              </div>
+              <div class="h-44 relative mt-3"><canvas id="expDistChart"></canvas></div>
+            </div>
+            <div class="glass-card rounded-xl p-4 shadow-sm lg:col-span-1">
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">Hiring Pipeline Funnel Velocity</h3>
+                <p class="text-[11px] text-slate-400 font-medium">Real-time status conversion dropoff volume values</p>
+              </div>
+              <div class="mt-3 space-y-2.5" id="funnelContainer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pg page-transition hidden" id="pg-compare">
+        <div class="space-y-5">
+          <div class="p-3 glass-card rounded-xl shadow-sm flex flex-col md:flex-row gap-3 items-center justify-between">
+            <div class="text-xs font-semibold text-slate-600 flex items-center gap-1.5">
+              <i class="ti ti-columns text-indigo-500 text-sm"></i>
+              <span>Select three distinct tracking IDs for cross-evaluation comparison:</span>
+            </div>
+            <div class="grid grid-cols-3 gap-2 w-full md:w-auto" id="cmpSels"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="cmpCards"></div>
+          <div class="glass-card rounded-xl p-5 shadow-sm">
+            <div>
+              <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">Overlay Radar Analysis Engine</h3>
+              <p class="text-[11px] text-slate-400 font-medium">Cross-vector dimensional balance mapping performance overlay comparison</p>
+            </div>
+            <div class="h-80 relative mt-4"><canvas id="radarChart"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div id="drawer" onclick="if(event.target===this)closeDrawer()" class="fixed inset-0 bg-slate-950/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-all duration-300 flex justify-end">
+    <div id="drawerContent" class="w-full max-w-md bg-white h-full shadow-2xl translate-x-full transition-transform duration-300 cubic-bezier(0.16, 1, 0.3, 1) flex flex-col">
+      <div id="drawerHeader" class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50"></div>
+      <div id="drawerBody" class="flex-1 overflow-y-auto no-scrollbar p-5 space-y-6"></div>
+      <div class="p-4 border-t border-slate-100 bg-slate-50/80 flex items-center gap-2">
+        <button onclick="closeDrawer()" class="flex-1 py-2 text-xs font-semibold text-slate-500 hover:text-slate-700 bg-white border border-slate-200 rounded-lg transition-colors cursor-pointer shadow-sm">Close Profile</button>
+        <button onclick="triggerCopilotFromDrawer()" class="flex-1 py-2 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors cursor-pointer shadow-md shadow-indigo-600/10 flex items-center justify-center gap-1"><i class="ti ti-sparkles text-xs"></i> Open Copilot Evaluation</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="fixed inset-0 bg-slate-950/50 backdrop-blur-xs flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-200" id="modal" onclick="if(event.target===this)closeModal()">
+    <div class="bg-white rounded-xl shadow-2xl border border-slate-100 w-full max-w-md overflow-hidden transform scale-95 translate-y-2 transition-all duration-200" id="modalContent">
+      <div class="px-5 py-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-md bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center text-sm"><i class="ti ti-user-plus"></i></div>
+          <h3 class="text-sm font-semibold text-slate-900">Add New Candidate Profile</h3>
+        </div>
+        <button onclick="closeModal()" class="w-6 h-6 rounded-md text-slate-400 hover:bg-slate-200/60 hover:text-slate-700 text-base flex items-center justify-center transition-colors cursor-pointer">&times;</button>
+      </div>
+      <div class="p-5 space-y-4">
+        <div>
+          <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Target Unique Identifier ID</label>
+          <input type="text" id="m-id" placeholder="e.g. CAND_101" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 focus:bg-white transition-all text-slate-800 placeholder-slate-400" />
+          <p class="text-[11px] text-rose-500 font-medium mt-1 hidden" id="e-id">ID empty or already occupied within system registries.</p>
+        </div>
+        <div>
+          <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Assigned Operational Title / Role</label>
+          <input type="text" id="m-role" placeholder="e.g. Senior MLOps Specialist" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 focus:bg-white transition-all text-slate-800 placeholder-slate-400" />
+          <p class="text-[11px] text-rose-500 font-medium mt-1 hidden" id="e-role">Please input a valid title assignment descriptor.</p>
+        </div>
+        <div>
+          <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Calculated Index Composite Score (0.500 – 0.900)</label>
+          <input type="number" id="m-score" min="0.50" max="0.90" step="0.001" placeholder="e.g. 0.784" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 focus:bg-white transition-all text-slate-800 font-mono placeholder-slate-400" />
+          <p class="text-[11px] text-rose-500 font-medium mt-1 hidden" id="e-score">Score must strictly scale within bounds of 0.500 to 0.900.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Core Tech Skill %</label>
+            <input type="number" id="m-skill" min="0" max="100" placeholder="e.g. 82" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 focus:bg-white transition-all text-slate-800 font-mono placeholder-slate-400" />
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Semantic Alignment %</label>
+            <input type="number" id="m-sem" min="0" max="100" placeholder="e.g. 76" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 focus:bg-white transition-all text-slate-800 font-mono placeholder-slate-400" />
+          </div>
+        </div>
+      </div>
+      <div class="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-end gap-2">
+        <button onclick="closeModal()" class="px-3 py-1.5 text-xs font-semibold text-slate-500 hover:text-slate-700 cursor-pointer">Cancel</button>
+        <button onclick="addCandidate()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-lg shadow-sm cursor-pointer transition-colors flex items-center gap-1"><i class="ti ti-check"></i> Register Profile</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-slate-900 text-white rounded-xl px-4 py-3 text-xs font-semibold shadow-2xl border border-slate-800 z-50 flex items-center gap-2 transform translate-y-10 opacity-0 pointer-events-none transition-all duration-300"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+
+  <script>
+    function sr(s){let x=s;return()=>{x=Math.sin(x)*10000;return x-Math.floor(x)}}
+    const rng=sr(42),clip=(v,a,b)=>Math.max(a,Math.min(b,v));
+    const TITLES=["ML Engineer","Data Scientist","NLP Engineer","AI Researcher","MLOps Engineer","Software Engineer","Research Scientist","LLM Engineer","Data Engineer"];
+
+    const CANDS=[
+      {id:"CAND_007",rank:1,score:0.868,skill:84,semantic:76,exp:100,career:97,title:"Staff ML Engineer"},
+      {id:"CAND_003",rank:2,score:0.8655,skill:86,semantic:79,exp:100,career:82,title:"Senior AI Engineer"},
+      {id:"CAND_009",rank:3,score:0.8624,skill:84,semantic:73,exp:100,career:100,title:"Senior AI Engineer"},
+      {id:"CAND_005",rank:4,score:0.8498,skill:84,semantic:71,exp:100,career:100,title:"Applied ML Engineer"},
+      {id:"CAND_002",rank:5,score:0.8483,skill:84,semantic:71,exp:100,career:100,title:"Search Engineer"},
+    ];
+    for(let i=0;i<95;i++){
+      const rank=i+6,sc=clip(+(0.84+(0.5-0.84)*i/94+(rng()-.5)*.008).toFixed(4),.5,.845),b=sc*100;
+      CANDS.push({
+        id:`CAND_${(rank+1).toString().padStart(3,'0')}`,rank,score:sc,
+        skill:clip(Math.round(b+(rng()-.5)*16),35,95),
+        semantic:clip(Math.round(b-8+(rng()-.5)*20),30,90),
+        exp:clip(Math.round(b+(rng()-.5)*10+10),40,100),
+        career:clip(Math.round(b+(rng()-.5)*20+5),35,100),
+        title:TITLES[Math.floor(rng()*TITLES.length)]
+      });
+    }
+
+    function assignRisk(){
+      const scs=CANDS.map(c=>c.score).sort((a,b)=>a-b);
+      const q67=scs[Math.floor(scs.length*.67)],q33=scs[Math.floor(scs.length*.33)];
+      CANDS.forEach(c=>{c.risk=c.score>=q67?"Low":c.score>=q33?"Medium":"High"});
+    }
+    assignRisk();
+
+    const PNAMES={dashboard:"Dashboard Overview",candidates:"Candidate Matrix Registry",ai:"TalentGPT Generative Recruiter",analytics:"Analytics & Cohort Trends",compare:"Multi-Factor Comparison Matrix"};
+    let anReady=false,cmpReady=false,rdrInst=null,distCh=null,riskCh=null,trendCh=null,bubCh=null,facCh=null,tierCh=null,expDistCh=null;
+    
+    function goTo(p,btn){
+      document.querySelectorAll('.pg').forEach(x=>x.classList.add('hidden'));
+      document.querySelectorAll('.ni').forEach(x=>{
+        x.className="ni w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all group cursor-pointer text-slate-400 hover:text-white hover:bg-slate-900/50";
+        x.removeAttribute('aria-current');
+        const dot=x.querySelector('.w-2.h-2');
+        if(dot) dot.remove();
+      });
+      document.getElementById('pg-'+p).classList.remove('hidden');
+      btn.className="ni w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all group cursor-pointer text-white bg-slate-900 font-semibold";
+      btn.setAttribute('aria-current','page');
+      if(p==='dashboard'){
+        const indicator=document.createElement('span');
+        indicator.className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse";
+        btn.appendChild(indicator);
+      }
+      document.getElementById('pgtitle').textContent=PNAMES[p];
+      document.getElementById('pgcrumb').textContent='TalentRadar / '+PNAMES[p];
+      if(p==='analytics')initAn();
+      if(p==='compare')initCmp();
+      if(p==='candidates')filterTable();
+      if(p==='ai')initAI();
+    }
+
+    function updateNavCount(){
+      document.getElementById('nav-count').textContent=CANDS.length;
+      document.getElementById('live-count').textContent=CANDS.length+' profiles';
+    }
+
+    function initDash(){
+      const avg=(CANDS.reduce((a,c)=>a+c.score,0)/CANDS.length).toFixed(3);
+      const t10=(CANDS.slice(0,10).reduce((a,c)=>a+c.score,0)/10).toFixed(3);
+      const lowR=CANDS.filter(c=>c.risk==='Low').length;
+      const hiSk=CANDS.filter(c=>c.skill>=80).length;
+
+      document.getElementById('krow').innerHTML=[
+        ['ti-users','text-indigo-600 bg-indigo-50 border-indigo-100','from-indigo-500/20',CANDS.length,'Total Candidates'],
+        ['ti-chart-line','text-violet-600 bg-violet-50 border-violet-100','from-violet-500/20',avg,'Average Fit Score'],
+        ['ti-trophy','text-cyan-600 bg-cyan-50 border-cyan-100','from-cyan-500/20',t10,'Top 10 Tier Mean'],
+        ['ti-shield-check','text-emerald-600 bg-emerald-50 border-emerald-100','from-emerald-500/20',lowR,'Low Risk Profiles'],
+        ['ti-bolt','text-amber-600 bg-amber-50 border-amber-100','from-amber-500/20',hiSk,'Highly Skilled (80+)']
+      ].map(([ic,ki,kc,val,lbl])=>`
+        <div class="glass-card rounded-xl p-4 shadow-xs relative overflow-hidden group hover:shadow-md hover:scale-[1.01] transition-all">
+          <div class="absolute inset-0 bg-gradient-to-br ${kc} to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative z-10 flex items-center justify-between">
+            <div class="space-y-1">
+              <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400">${lbl}</p>
+              <h4 class="text-2xl font-bold text-slate-900 mono tracking-tight">${val}</h4>
+            </div>
+            <div class="w-8 h-8 rounded-lg border flex items-center justify-center text-base shadow-xs ${ki}">
+              <i class="ti ${ic}"></i>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('prow').innerHTML=CANDS.slice(0,3).map((c,i)=>{
+        const M=['🥇 Staff Choice','🥈 Elite Tier','🥉 Premium Match'],
+              CL=['from-amber-500 via-orange-500 to-yellow-600','from-slate-700 via-slate-800 to-slate-900','from-amber-700 via-amber-800 to-orange-900'],
+              BG=['bg-amber-50/60 border-amber-200/60','bg-slate-50/60 border-slate-200/60','bg-orange-50/60 border-orange-200/60'],
+              TXT=['text-amber-800','text-slate-800','text-orange-800'];
+        return `
+          <div onclick="openDrawer('${c.id}')" class="rounded-xl border ${BG[i]} p-4 flex items-center justify-between shadow-xs hover:shadow-md hover:-translate-y-0.5 cursor-pointer transition-all bg-white/40 backdrop-blur-md">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-tr ${CL[i]} text-white font-mono font-bold text-xs flex items-center justify-center shadow-md">#${c.rank}</div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <h4 class="text-xs font-bold text-slate-900 mono">${c.id}</h4>
+                  <span class="text-[9px] font-bold tracking-wide uppercase px-1.5 py-0.2 rounded-md bg-white border border-slate-200/80 ${TXT[i]}">${M[i]}</span>
+                </div>
+                <p class="text-[11px] text-slate-500 font-medium truncate max-w-[140px] mt-0.5">${c.title}</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-sm font-extrabold text-slate-900 font-mono">${c.score.toFixed(3)}</p>
+              <p class="text-[10px] text-slate-400 font-medium tracking-wide">Index Value</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if(distCh) distCh.destroy();
+      const bins=14,mn=.49,mx=.89,st=(mx-mn)/bins,cnts=Array(bins).fill(0),ctrs=[];
+      for(let i=0;i<bins;i++){
+        const lo=mn+i*st;
+        ctrs.push(+((lo*2+st)/2).toFixed(3));
+        CANDS.forEach(c=>{if(c.score>=lo&&c.score<lo+st)cnts[i]++});
+      }
+      const t10m=CANDS[9].score;
+      distCh=new Chart(document.getElementById('distChart'),{
+        type:'bar',
+        data:{labels:ctrs.map(v=>v.toFixed(2)),datasets:[{data:cnts,backgroundColor:ctrs.map(c=>c>=t10m?'#6366f1':'#cbd5e1'),borderWidth:0,borderRadius:4,barPercentage:0.65}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#94a3b8',font:{size:10,family:'JetBrains Mono'}},grid:{display:false}},y:{ticks:{color:'#94a3b8',font:{size:10}},grid:{color:'#f1f5f9'}}}}
+      });
+
+      if(riskCh) riskCh.destroy();
+      const lo=CANDS.filter(c=>c.risk==='Low').length,me=CANDS.filter(c=>c.risk==='Medium').length,hi=CANDS.filter(c=>c.risk==='High').length;
+      document.getElementById('rleg').innerHTML=[['#10b981','bg-emerald-50 border-emerald-200','Low Risk Hire',lo],['#f59e0b','bg-amber-50 border-amber-200','Medium Warning',me],['#ef4444','bg-rose-50 border-rose-200','High Vulnerability',hi]]
+        .map(([tc,bg,l,n])=>`<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border ${bg} text-[10px] font-semibold" style="color:${tc}"><span class="w-1.5 h-1.5 rounded-full" style="background:${tc}"></span>${l} (${n})</span>`).join('');
+      riskCh=new Chart(document.getElementById('riskChart'),{
+        type:'doughnut',
+        data:{labels:['Low','Medium','High'],datasets:[{data:[lo,me,hi],backgroundColor:['#10b981','#f59e0b','#ef4444'],borderWidth:2,borderColor:'#fff',hoverOffset:4}]},
+        options:{responsive:true,maintainAspectRatio:false,cutout:'75%',plugins:{legend:{display:false}}}
+      });
+
+      if(trendCh) trendCh.destroy();
+      trendCh=new Chart(document.getElementById('trendChart'),{
+        type:'line',
+        data:{labels:CANDS.map(c=>c.rank),datasets:[{data:CANDS.map(c=>c.score),borderColor:'#4f46e5',borderWidth:2,pointRadius:0,fill:true,backgroundColor:(context)=>{const ctx=context.chart.ctx;const gradient=ctx.createLinearGradient(0,0,0,160);gradient.addColorStop(0,'rgba(79,70,229,0.12)');gradient.addColorStop(1,'rgba(79,70,229,0.00)');return gradient;},tension:.2}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#94a3b8',font:{size:9},maxTicksLimit:15},grid:{display:false}},y:{ticks:{color:'#94a3b8',font:{size:9,family:'JetBrains Mono'},callback:v=>v.toFixed(2)},grid:{color:'#f1f5f9'}}}}
+      });
+    }
+
+    let fil=[...CANDS],pg2=1,pp=10;
+    function filterTable(){
+      const q=document.getElementById('srch').value.toLowerCase();
+      const r=document.getElementById('rfil').value;
+      const s=document.getElementById('sortFil').value;
+      fil=CANDS.filter(c=>(c.id.toLowerCase().includes(q)||(c.title||'').toLowerCase().includes(q))&&(r==='all'||c.risk===r));
+      if(s==='rank_asc') fil.sort((a,b)=>a.rank-b.rank);
+      else if(s==='score_desc') fil.sort((a,b)=>b.score-a.score);
+      else if(s==='skill_desc') fil.sort((a,b)=>b.skill-a.skill);
+      else if(s==='semantic_desc') fil.sort((a,b)=>b.semantic-a.semantic);
+      else if(s==='exp_desc') fil.sort((a,b)=>b.exp-a.exp);
+      pg2=1; renderTable();
+    }
+
+    function renderTable(){
+      const s=(pg2-1)*pp,sl=fil.slice(s,s+pp);
+      const gradients=['from-indigo-500 to-purple-500','from-emerald-500 to-teal-500','from-amber-500 to-orange-500','from-fuchsia-500 to-pink-500','from-sky-500 to-blue-500'];
+      document.getElementById('tbl').innerHTML=sl.map((c)=>{
+        const rc=c.risk==='Low'?'bg-emerald-50 text-emerald-700 border-emerald-100':c.risk==='Medium'?'bg-amber-50 text-amber-700 border-amber-100':'bg-rose-50 text-rose-700 border-rose-100';
+        const nc=c.rank===1?'bg-amber-500 text-white font-bold':c.rank===2?'bg-slate-400 text-white font-bold':c.rank===3?'bg-amber-700 text-white font-bold':'bg-slate-100 text-slate-700';
+        const grad=gradients[c.rank%gradients.length];
+        return `
+          <tr onclick="openDrawer('${c.id}')" class="hover:bg-slate-50/80 transition-colors cursor-pointer group">
+            <td class="p-3 text-center"><span class="inline-flex w-5 h-5 rounded-md items-center justify-center text-[10px] font-mono shadow-xs ${nc}">${c.rank}</span></td>
+            <td class="p-3">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br ${grad} text-white flex items-center justify-center font-bold text-[10px] tracking-wider shadow-xs uppercase">${c.id.substring(5,7)}</div>
+                <div class="min-w-0">
+                  <h5 class="text-xs font-bold text-slate-900 mono group-hover:text-indigo-600 transition-colors">${c.id}</h5>
+                  <p class="text-[11px] text-slate-400 font-medium truncate max-w-[180px] mt-0.5">${c.title}</p>
+                </div>
+              </div>
+            </td>
+            <td class="p-3">
+              <div class="flex items-center gap-2 max-w-[140px]">
+                <span class="font-mono text-xs font-bold text-slate-700">${c.score.toFixed(3)}</span>
+                <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-indigo-600 rounded-full" style="width:${((c.score-.5)/.4*100).toFixed(1)}%"></div>
+                </div>
+              </div>
+            </td>
+            <td class="p-3 text-center font-mono text-xs font-semibold text-slate-600">${c.skill}%</td>
+            <td class="p-3 text-center font-mono text-xs font-semibold text-slate-600">${c.semantic}%</td>
+            <td class="p-3 text-center font-mono text-xs font-semibold text-slate-600">${c.exp}%</td>
+            <td class="p-3 text-center font-mono text-xs font-semibold text-slate-600">${c.career}%</td>
+            <td class="p-3 text-center"><span class="inline-block px-2 py-0.5 text-[10px] font-bold border rounded-md tracking-wide uppercase ${rc}">${c.risk}</span></td>
+          </tr>
+        `;
+      }).join('');
+      const tot=Math.ceil(fil.length/pp);
+      document.getElementById('pginfo').textContent=`Showing ${s+1}–${Math.min(s+pp,fil.length)} of total ${fil.length} registry items`;
+      const pb=document.getElementById('pbs');
+      pb.innerHTML='';
+      let startPg=Math.max(1,pg2-2),endPg=Math.min(tot,startPg+4);
+      if(endPg-startPg<4) startPg=Math.max(1,endPg-4);
+      if(startPg>1) pb.appendChild(createPageBtn(1,"1..."));
+      for(let i=startPg;i<=endPg;i++) pb.appendChild(createPageBtn(i,i,i===pg2));
+      if(endPg<tot) pb.appendChild(createPageBtn(tot,`...${tot}`));
+    }
+
+    function createPageBtn(page,label,isActive=false){
+      const b=document.createElement('button');
+      b.textContent=label;
+      b.className=`w-7 h-7 flex items-center justify-center rounded-md text-xs font-medium cursor-pointer transition-all border ${isActive?'bg-indigo-600 border-indigo-600 text-white font-bold shadow-xs':'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`;
+      b.onclick=(e)=>{e.stopPropagation();pg2=page;renderTable();};
+      return b;
+    }
+
+    function openDrawer(id){
+      const c=CANDS.find(x=>x.id===id);
+      if(!c) return;
+      const rc=c.risk==='Low'?'bg-emerald-50 text-emerald-700 border-emerald-100':c.risk==='Medium'?'bg-amber-50 text-amber-700 border-amber-100':'bg-rose-50 text-rose-700 border-rose-100';
+      document.getElementById('drawerHeader').innerHTML=`
+        <div>
+          <div class="flex items-center gap-2">
+            <h4 class="text-sm font-bold text-slate-900 font-mono tracking-tight">${c.id}</h4>
+            <span class="px-2 py-0.5 text-[9px] font-bold border rounded-md tracking-wide uppercase ${rc}">${c.risk} Tier</span>
+          </div>
+          <p class="text-xs text-slate-400 font-medium mt-0.5">${c.title}</p>
+        </div>
+        <button onclick="closeDrawer()" class="w-7 h-7 rounded-lg text-slate-400 hover:bg-slate-200/50 hover:text-slate-700 flex items-center justify-center text-lg cursor-pointer transition-colors">&times;</button>
+      `;
+      document.getElementById('drawerBody').innerHTML=`
+        <div class="bg-gradient-to-br from-slate-900 to-indigo-950 p-4 rounded-xl text-white shadow-md relative overflow-hidden">
+          <div class="absolute -right-6 -bottom-6 text-white/5 text-7xl font-mono pointer-events-none">#${c.rank}</div>
+          <p class="text-[10px] uppercase font-bold tracking-widest text-indigo-300">Composite Placement Rank</p>
+          <h3 class="text-3xl font-black font-mono tracking-tight mt-1">#${c.rank} <span class="text-sm font-medium text-slate-300 font-sans">/ ${CANDS.length}</span></h3>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between items-center">
+            <div>
+              <p class="text-[10px] text-indigo-200/70 uppercase tracking-wider font-semibold">Normalized Match Index</p>
+              <p class="text-xl font-bold font-mono tracking-tight mt-0.5">${c.score.toFixed(4)}</p>
+            </div>
+            <div class="text-right">
+              <p class="text-[10px] text-indigo-200/70 uppercase tracking-wider font-semibold">Confidence Rating</p>
+              <p class="text-sm font-bold text-emerald-400 font-mono mt-0.5">${Math.round((c.score-.5)/.4*100)}% Match</p>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400">Core Factor Alignment Matrix</h5>
+          ${[['Technical Skill Score',c.skill,'bg-indigo-500'],['Semantic Fit Match',c.semantic,'bg-violet-500'],['Calculated Experience Weight',c.exp,'bg-cyan-500'],['Career Growth Projection',c.career,'bg-emerald-500']].map(([lbl,val,col])=>`
+            <div class="space-y-1 bg-slate-50 border border-slate-100 p-2.5 rounded-lg">
+              <div class="flex justify-between text-xs font-medium">
+                <span class="text-slate-600">${lbl}</span>
+                <span class="font-mono font-bold text-slate-900">${val}%</span>
+              </div>
+              <div class="h-1.5 bg-slate-200/70 rounded-full overflow-hidden">
+                <div class="h-full ${col} rounded-full" style="width:${val}%"></div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        <div class="border border-dashed border-slate-200 rounded-xl p-3.5 bg-slate-50/50 space-y-2">
+          <h6 class="text-xs font-bold text-slate-800 flex items-center gap-1"><i class="ti ti-file-text text-slate-500"></i> Automated Metadata Extraction</h6>
+          <p class="text-[11px] text-slate-500 leading-relaxed">Profile registered under general technology classification hierarchy. Assessment values originate from vector semantic alignment engines cross-referencing internal technical benchmarks.</p>
+        </div>
+      `;
+      document.getElementById('drawer').setAttribute('data-active-id',id);
+      const d=document.getElementById('drawer'),dc=document.getElementById('drawerContent');
+      d.classList.remove('pointer-events-none');d.classList.add('opacity-100');dc.classList.remove('translate-x-full');
+    }
+
+    function closeDrawer(){
+      const d=document.getElementById('drawer'),dc=document.getElementById('drawerContent');
+      d.classList.add('pointer-events-none');d.classList.remove('opacity-100');dc.classList.add('translate-x-full');
+    }
+
+    function triggerCopilotFromDrawer(){
+      const id=document.getElementById('drawer').getAttribute('data-active-id');
+      closeDrawer();
+      if(id){
+        goTo('ai',document.querySelector("button[onclick*=\"goTo('ai'\"]"));
+        const sel=document.getElementById('aiSel');
+        if(sel){sel.value=id;renderAI();}
+      }
+    }
+
+    function downloadCSV(){
+      const h='Rank,ID,Title,Score,Skill,Semantic,Experience,Career,Risk\n';
+      const r=CANDS.map(c=>`${c.rank},${c.id},${c.title||''},${c.score},${c.skill},${c.semantic},${c.exp},${c.career},${c.risk}`).join('\n');
+      const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(h+r);a.download='talentradar_export.csv';a.click();
+      showToast('🎉 Dataset cohort data registry successfully exported to local CSV spreadsheet.');
+    }
+
+    function initAI(){
+      const s=document.getElementById('aiSel');
+      if(!s) return;
+      const cachedVal=s.value;
+      s.innerHTML=CANDS.map(c=>`<option value="${c.id}">${c.id} — Position Rank #${c.rank} (${c.title})</option>`).join('');
+      if(cachedVal&&CANDS.find(x=>x.id===cachedVal)) s.value=cachedVal;
+      renderAI();
+    }
+
+    function renderAI(){
+      const id=document.getElementById('aiSel').value,c=CANDS.find(x=>x.id===id)||CANDS[0];
+      let vt,vc,ve,vtc,cardBg;
+      if(c.score>=.82){vt='Strong Strategic Hire';vc='bg-emerald-500/10 border-emerald-500/30 text-emerald-400';ve='🥇';vtc='#10b981';cardBg='from-emerald-950/20';}
+      else if(c.score>=.72){vt='Recommended Match';vc='bg-indigo-500/10 border-indigo-500/30 text-indigo-400';ve='✨';vtc='#6366f1';cardBg='from-indigo-950/20';}
+      else if(c.score>=.62){vt='Standard Interview Panel';vc='bg-amber-500/10 border-amber-500/30 text-amber-400';ve='⚖️';vtc='#f59e0b';cardBg='from-amber-950/20';}
+      else{vt='Deferred / General Pool';vc='bg-slate-800 border-slate-700 text-slate-400';ve='💤';vtc='#64748b';cardBg='from-slate-900';}
+      const met={Skill:c.skill,Semantic:c.semantic,Experience:c.exp,Career:c.career};
+      const str=Object.entries(met).filter(([,v])=>v>=80).map(([k])=>k);
+      const con=Object.entries(met).filter(([,v])=>v<65).map(([k])=>k);
+      const conf=Math.round(Math.min(99,Math.max(40,(c.score-.5)/.368*100)));
+      const acts={'Strong Strategic Hire':'Fast-track to architectural/leadership synchronization directly. Prepare immediate allocation proposal.','Recommended Match':'Advance to structured technology panel execution immediately. Highly viable candidate stack profile.','Standard Interview Panel':'Trigger asynchronous baseline screening challenge to isolate variance in borderline data vectors.','Deferred / General Pool':'Retain profile mapping markers inside passive background index for future product iteration scope expansion.'};
+      document.getElementById('aiStats').innerHTML=[['Unique Identifier ID',c.id],['Assigned Global Rank',`#${c.rank}`],['Clustered Risk Tier',c.risk],['Extracted Meta Title',c.title||'General Scope'],['Empirical Match Prob',`${conf}% Level`]].map(([k,v])=>`
+        <div class="flex justify-between items-center text-xs py-1 border-b border-slate-100/40">
+          <span class="text-slate-400 font-medium">${k}</span>
+          <span class="font-mono text-slate-800 font-bold bg-white/50 px-1.5 py-0.2 rounded">${v}</span>
+        </div>
+      `).join('');
+      const fc=['#6366f1','#8b5cf6','#06b6d4','#10b981'];
+      document.getElementById('aiFactors').innerHTML=Object.entries(met).map(([k,v],i)=>`
+        <div class="space-y-1">
+          <div class="flex justify-between text-xs font-medium">
+            <span class="text-slate-500">${k} Dimension</span>
+            <span class="font-mono font-bold text-slate-800">${v}%</span>
+          </div>
+          <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+            <div class="h-full rounded-full" style="width:${v}%;background:${fc[i]}"></div>
+          </div>
+        </div>
+      `).join('');
+      document.getElementById('aiVerdict').innerHTML=`
+        <div class="p-6 border-b border-slate-800 bg-gradient-to-b ${cardBg} to-transparent">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-indigo-400 font-bold">Generative Verdict Matrix</span>
+              <h4 class="text-xl font-bold text-white font-mono mt-0.5">${c.id}</h4>
+              <p class="text-xs text-slate-400 mt-0.5">${c.title} &bull; Absolute Registry Placement Rank #${c.rank}</p>
+            </div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold tracking-wide shadow-xl ${vc}"><span>${ve}</span> <span>${vt}</span></div>
+          </div>
+          <div class="mt-6 space-y-1.5">
+            <div class="flex justify-between items-center text-xs font-medium text-slate-400">
+              <span>Confidence Array Distribution Layer</span>
+              <span class="font-mono text-white">${conf}% Stability Factor</span>
+            </div>
+            <div class="h-2 bg-slate-800 rounded-full overflow-hidden border border-slate-700/50">
+              <div class="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500" style="width:${conf}%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="p-6 space-y-5">
+          <div class="flex gap-3.5 items-start">
+            <div class="w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm flex-shrink-0"><i class="ti ti-circle-check"></i></div>
+            <div class="space-y-0.5">
+              <h5 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Validated Key Strengths</h5>
+              <p class="text-xs text-slate-300 leading-relaxed">${str.length?'Outstanding parameters localized in: <span class="text-white font-semibold">'+str.join(', ')+'</span> vectors.':'Balanced matrix response profile lacking abnormal outlier peaks.'}</p>
+            </div>
+          </div>
+          <div class="flex gap-3.5 items-start">
+            <div class="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-sm flex-shrink-0"><i class="ti ti-alert-triangle"></i></div>
+            <div class="space-y-0.5">
+              <h5 class="text-xs font-bold uppercase tracking-wider text-amber-400">Risk Variance Watch-outs</h5>
+              <p class="text-xs text-slate-300 leading-relaxed">${con.length?'Observed degradation indicators inside: <span class="text-white font-semibold">'+con.join(', ')+'</span> tracking arrays.':'No critical optimization anomalies or pattern variations found.'}</p>
+            </div>
+          </div>
+          <div class="flex gap-3.5 items-start pt-4 border-t border-slate-800">
+            <div class="w-7 h-7 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center text-sm flex-shrink-0"><i class="ti ti-arrow-right"></i></div>
+            <div class="space-y-0.5">
+              <h5 class="text-xs font-bold uppercase tracking-wider text-indigo-400">Next Action Directives</h5>
+              <p class="text-xs text-slate-200 leading-relaxed font-medium">${acts[vt]}</p>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function initAn(){
+      if(anReady) return;
+      anReady=true;
+      bubCh=new Chart(document.getElementById('bubChart'),{type:'bubble',data:{datasets:[{label:'Low Risk',data:CANDS.filter(c=>c.risk==='Low').map(c=>({x:c.skill,y:c.semantic,r:Math.max(4,(c.score-.5)*22)})),backgroundColor:'rgba(16,185,129,0.25)',borderColor:'rgba(16,185,129,0.8)',borderWidth:1.5},{label:'Medium Warning',data:CANDS.filter(c=>c.risk==='Medium').map(c=>({x:c.skill,y:c.semantic,r:Math.max(4,(c.score-.5)*22)})),backgroundColor:'rgba(245,158,11,0.25)',borderColor:'rgba(245,158,11,0.8)',borderWidth:1.5},{label:'High Risk Tier',data:CANDS.filter(c=>c.risk==='High').map(c=>({x:c.skill,y:c.semantic,r:Math.max(4,(c.score-.5)*22)})),backgroundColor:'rgba(239,68,68,0.25)',borderColor:'rgba(239,68,68,0.8)',borderWidth:1.5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#64748b',font:{size:10,weight:'600'},boxWidth:8}}},scales:{x:{title:{display:true,text:'Technical Skill Capacity %',color:'#94a3b8',font:{size:9,weight:'bold'}},ticks:{color:'#94a3b8',font:{size:9}},grid:{color:'#f1f5f9'},min:30,max:100},y:{title:{display:true,text:'Contextual Semantic Alignment %',color:'#94a3b8',font:{size:9,weight:'bold'}},ticks:{color:'#94a3b8',font:{size:9}},grid:{color:'#f1f5f9'},min:25,max:95}}}});
+      const t10=CANDS.slice(0,10);
+      facCh=new Chart(document.getElementById('facChart'),{type:'bar',data:{labels:t10.map(c=>c.id.replace('CAND_','#')),datasets:[{label:'Technical',data:t10.map(c=>c.skill),backgroundColor:'#4f46e5',borderRadius:2},{label:'Semantic',data:t10.map(c=>c.semantic),backgroundColor:'#8b5cf6',borderRadius:2},{label:'Experience',data:t10.map(c=>c.exp),backgroundColor:'#06b6d4',borderRadius:2},{label:'Career Growth',data:t10.map(c=>c.career),backgroundColor:'#10b981',borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#64748b',font:{size:10},boxWidth:8,padding:10}}},scales:{x:{ticks:{color:'#94a3b8',font:{size:9,family:'JetBrains Mono'}},grid:{display:false}},y:{ticks:{color:'#94a3b8',font:{size:9}},grid:{color:'#f1f5f9'},max:100}}}});
+      tierCh=new Chart(document.getElementById('tierChart'),{type:'bar',data:{labels:['Low Tier','Med Tier','High Risk'],datasets:[{data:['Low','Medium','High'].map(r=>{const g=CANDS.filter(c=>c.risk===r);return g.length?+(g.reduce((a,c)=>a+c.score,0)/g.length).toFixed(3):0;}),backgroundColor:['rgba(16,185,129,0.8)','rgba(245,158,11,0.8)','rgba(239,68,68,0.8)'],barPercentage:0.4,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#94a3b8',font:{size:10}},grid:{display:false}},y:{ticks:{color:'#94a3b8',font:{size:9,family:'JetBrains Mono'},callback:v=>v.toFixed(2)},grid:{color:'#f1f5f9'},min:0.4}}}});
+      const expRanges=['40-55%','56-70%','71-85%','86-100%'];
+      const expCounts=[CANDS.filter(c=>c.exp>=40&&c.exp<=55).length,CANDS.filter(c=>c.exp>55&&c.exp<=70).length,CANDS.filter(c=>c.exp>70&&c.exp<=85).length,CANDS.filter(c=>c.exp>85&&c.exp<=100).length];
+      expDistCh=new Chart(document.getElementById('expDistChart'),{type:'bar',data:{labels:expRanges,datasets:[{data:expCounts,backgroundColor:'#8b5cf6',borderRadius:4,barPercentage:0.5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#94a3b8',font:{size:10}},grid:{display:false}},y:{ticks:{color:'#94a3b8',font:{size:9}},grid:{color:'#f1f5f9'}}}}});
+      const f1=CANDS.length,f2=Math.round(f1*0.72),f3=Math.round(f1*0.38),f4=Math.round(f1*0.12);
+      document.getElementById('funnelContainer').innerHTML=[['Inbound Cohort Pool',f1,'w-full bg-slate-800'],['Algorithmic Shortlist',f2,'w-[72%] bg-indigo-600'],['Technical Verification',f3,'w-[38%] bg-violet-600'],['Offer Calibration',f4,'w-[12%] bg-emerald-600']].map(([lbl,val,widthCls])=>`
+        <div class="space-y-1">
+          <div class="flex justify-between items-center text-xs font-medium">
+            <span class="text-slate-600">${lbl}</span>
+            <span class="font-mono text-slate-900 font-bold">${val} profiles</span>
+          </div>
+          <div class="h-5 rounded-md ${widthCls} shadow-xs flex items-center px-2 text-[10px] text-white font-mono font-bold">${Math.round(val/f1*100)}%</div>
+        </div>
+      `).join('');
+    }
+
+    function initCmp(){
+      if(cmpReady) return;
+      cmpReady=true;
+      const w=document.getElementById('cmpSels');
+      w.innerHTML='';
+      [0,1,2].forEach(i=>{
+        const s=document.createElement('select');
+        s.className="bg-white border border-slate-200 text-slate-800 rounded-lg p-1.5 text-xs focus:outline-none focus:border-indigo-500 font-mono font-bold cursor-pointer w-full shadow-xs";
+        s.innerHTML=CANDS.map(c=>`<option value="${c.id}">${c.id}</option>`).join('');
+        s.value=CANDS[i].id;s.onchange=renderCmp;w.appendChild(s);
+      });
+      renderCmp();
+    }
+
+    function renderCmp(){
+      const sels=document.getElementById('cmpSels').querySelectorAll('select');
+      const cs=[...sels].map(s=>CANDS.find(c=>c.id===s.value));
+      const dots=['#4f46e5','#8b5cf6','#06b6d4'];
+      let maxSc=-1,winIdx=0;
+      cs.forEach((c,idx)=>{if(c.score>maxSc){maxSc=c.score;winIdx=idx;}});
+      document.getElementById('cmpCards').innerHTML=cs.map((c,i)=>`
+        <div class="glass-card rounded-xl p-5 shadow-xs relative border-t-4 overflow-hidden ${i===winIdx?'ring-2 ring-indigo-600/30 ring-offset-1':''}" style="border-top-color:${dots[i]}">
+          ${i===winIdx?'<span class="absolute top-2 right-2 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-600 text-white shadow-sm flex items-center gap-0.5"><i class="ti ti-trophy"></i> Optimal Matrix Winner</span>':''}
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-2.5 h-2.5 rounded-full" style="background:${dots[i]}"></div>
+            <div>
+              <h5 class="text-xs font-bold text-slate-900 font-mono">${c.id}</h5>
+              <p class="text-[10px] text-slate-400 font-medium">Rank #${c.rank} &bull; ${c.risk} Risk</p>
+            </div>
+          </div>
+          <div class="mb-4">
+            <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Composite Value Index</p>
+            <h3 class="text-2xl font-black text-slate-900 font-mono mt-0.5">${c.score.toFixed(4)}</h3>
+          </div>
+          <div class="space-y-2.5">
+            ${[['Technical Skill',c.skill,dots[0]],['Semantic Match',c.semantic,dots[1]],['Experience Weight',c.exp,dots[2]],['Career Growth',c.career,'#10b981']].map(([l,v,col])=>`
+              <div class="space-y-0.5">
+                <div class="flex justify-between text-[10px] font-medium">
+                  <span class="text-slate-500">${l}</span>
+                  <span class="font-mono font-bold text-slate-800">${v}%</span>
+                </div>
+                <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                  <div class="h-full rounded-full" style="width:${v}%;background:${col}"></div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+      if(rdrInst) rdrInst.destroy();
+      rdrInst=new Chart(document.getElementById('radarChart'),{type:'radar',data:{labels:['Score Multiplier','Technical Skill','Semantic Fit','Experience Array','Career Projection'],datasets:cs.map((c,i)=>({label:c.id,data:[Math.round(c.score*100),c.skill,c.semantic,c.exp,c.career],borderColor:dots[i],backgroundColor:dots[i]+'0f',borderWidth:2,pointBackgroundColor:dots[i],pointRadius:3.5}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#475569',font:{size:11,weight:'500'},boxWidth:10}}},scales:{r:{min:0,max:100,ticks:{color:'#94a3b8',backdropColor:'transparent',font:{size:9},stepSize:25},grid:{color:'#e2e8f0'},pointLabels:{color:'#64748b',font:{size:10,weight:'600'}},angleLines:{color:'#e2e8f0'}}}}});
+    }
+
+    function showProfile(){ showToast('🛡️ HR Account Auth: Umme Hani; System Lifecycle Role: Talent Acquisition Lead &bull; Token Session Status: Active.'); }
+
+    function openModal(){
+      const m=document.getElementById('modal'),mc=document.getElementById('modalContent');
+      m.className="fixed inset-0 bg-slate-950/50 backdrop-blur-xs flex items-center justify-center z-50 opacity-100 ease-out duration-200";
+      mc.className="bg-white rounded-xl shadow-2xl border border-slate-100 w-full max-w-md overflow-hidden transform scale-100 translate-y-0 ease-out duration-200";
+      ['m-id','m-role','m-score','m-skill','m-sem'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+      ['e-id','e-role','e-score'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.add('hidden');});
+      setTimeout(()=>document.getElementById('m-id').focus(),100);
+    }
+
+    function closeModal(){
+      const m=document.getElementById('modal'),mc=document.getElementById('modalContent');
+      m.className="fixed inset-0 bg-slate-950/50 backdrop-blur-xs flex items-center justify-center z-50 opacity-0 pointer-events-none ease-in duration-150";
+      mc.className="bg-white rounded-xl shadow-2xl border border-slate-100 w-full max-w-md overflow-hidden transform scale-95 translate-y-2 ease-in duration-150";
+    }
+
+    function addCandidate(){
+      const id=document.getElementById('m-id').value.trim();
+      const role=document.getElementById('m-role').value.trim();
+      const score=parseFloat(document.getElementById('m-score').value);
+      const skill=parseInt(document.getElementById('m-skill').value)||Math.round(score*100+5);
+      const sem=parseInt(document.getElementById('m-sem').value)||Math.round(score*100-5);
+      let valid=true;
+      const isDuplicate=CANDS.find(c=>c.id.toLowerCase()===id.toLowerCase());
+      if(!id||isDuplicate){document.getElementById('e-id').classList.remove('hidden');valid=false;}
+      else document.getElementById('e-id').classList.add('hidden');
+      if(!role){document.getElementById('e-role').classList.remove('hidden');valid=false;}
+      else document.getElementById('e-role').classList.add('hidden');
+      if(isNaN(score)||score<0.5||score>0.9){document.getElementById('e-score').classList.remove('hidden');valid=false;}
+      else document.getElementById('e-score').classList.add('hidden');
+      if(!valid) return;
+      const exp=clip(Math.round(score*100+5),40,100);
+      const career=clip(Math.round(score*100),35,100);
+      const newC={id,rank:CANDS.length+1,score,skill:clip(skill,30,100),semantic:clip(sem,25,95),exp,career,title:role};
+      CANDS.push(newC);
+      CANDS.sort((a,b)=>b.score-a.score);
+      CANDS.forEach((c,i)=>c.rank=i+1);
+      assignRisk();updateNavCount();closeModal();confettiEffect();
+      showToast(`🎉 Operational success! Profile registration completed for identifier unique node token ${id}.`);
+      anReady=false;cmpReady=false;
+      setTimeout(()=>{initDash();filterTable();if(!document.getElementById('pg-ai').classList.contains('hidden'))initAI();if(!document.getElementById('pg-compare').classList.contains('hidden'))initCmp();},200);
+    }
+
+    function confettiEffect(){
+      const colors=['#4f46e5','#8b5cf6','#10b981','#f59e0b','#ef4444','#06b6d4'];
+      for(let i=0;i<50;i++){
+        const el=document.createElement('div');
+        el.className='confetti-piece';
+        el.style.left=`${25+Math.random()*50}%`;el.style.top='0px';
+        el.style.background=colors[Math.floor(Math.random()*colors.length)];
+        el.style.borderRadius=Math.random()>.5?'50%':'3px';
+        const size=5+Math.random()*6;el.style.width=`${size}px`;el.style.height=`${size}px`;
+        el.style.animationDelay=`${Math.random()*0.3}s`;el.style.animationDuration=`${1.2+Math.random()*0.6}s`;
+        document.body.appendChild(el);setTimeout(()=>el.remove(),2000);
+      }
+    }
+
+    let toastTimer;
+    function showToast(msg){
+      const t=document.getElementById('toast');
+      t.innerHTML=msg;
+      t.className="fixed bottom-5 left-1/2 -translate-x-1/2 bg-slate-900 text-white rounded-xl px-4 py-3 text-xs font-semibold shadow-2xl border border-slate-800 z-50 flex items-center gap-2 transform translate-y-0 opacity-100 ease-out duration-300";
+      clearTimeout(toastTimer);
+      toastTimer=setTimeout(()=>{t.className="fixed bottom-5 left-1/2 -translate-x-1/2 bg-slate-900 text-white rounded-xl px-4 py-3 text-xs font-semibold shadow-2xl border border-slate-800 z-50 flex items-center gap-2 transform translate-y-10 opacity-0 pointer-events-none ease-in duration-300";},4000);
+    }
+
+    initDash();
+    filterTable();
+  </script>
+</body>
+</html>
